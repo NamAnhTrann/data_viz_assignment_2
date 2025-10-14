@@ -1,0 +1,43 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Alcohol-Induced Death Rates in Australia (2023)",
+
+  "projection": {"type": "mercator"},
+  "data": {
+    "url": "graphs/ne_1.json",
+    "format": {
+      "type": "topojson",
+      "feature": "ne_10m_admin_1_states_provinces"
+    }
+  },
+  "transform": [
+    {
+      "lookup": "properties.name",
+     "from": {
+  "data": {
+    "url": "../alcohol_death_summary.csv"
+  },
+  "key": "Region of usual residence",
+  "fields": ["Year", "Rate"]
+}
+    },
+    { "filter": "datum.Year == 2023" }
+  ],
+  "mark": {"type": "geoshape", "stroke": "black", "strokeWidth": 0.5},
+  "encoding": {
+    "color": {
+      "field": "Rate",
+      "type": "quantitative",
+      "title": "Death Rate (%)",
+      "scale": {
+        "type": "threshold",
+        "domain": [4, 6, 8, 10],
+        "range": ["#fee5d9", "#fcae91", "#fb6a4a", "#de2d26", "#a50f15"]
+      }
+    },
+    "tooltip": [
+      {"field": "properties.name", "title": "State"},
+      {"field": "Rate", "type": "quantitative"}
+    ]
+  }
+}

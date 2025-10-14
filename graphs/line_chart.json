@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "National comparison of alcohol-related deaths and fatal car crashes (2019–2023)",
+
+  "data": {
+    "values": []
+  },
+  "layer": [
+    {
+      "data": { "url": "../alcohol_death_summary.csv" },
+      "transform": [
+        {
+          "aggregate": [
+            { "op": "sum", "field": "Number", "as": "Deaths" }
+          ],
+          "groupby": ["Year"]
+        },
+        { "filter": "datum.Year >= 2019" },
+        { "calculate": "'Alcohol Deaths'", "as": "Category" }
+      ],
+      "mark": { "type": "line", "color": "red", "point": true },
+      "encoding": {
+        "x": { "field": "Year", "type": "ordinal", "title": "Year" },
+        "y": { "field": "Deaths", "type": "quantitative", "title": "Number of Deaths" },
+        "color": { "field": "Category", "type": "nominal", "title": "Type" },
+        "tooltip": [
+          { "field": "Year" },
+          { "field": "Deaths", "title": "Number of Deaths" },
+          { "field": "Category" }
+        ]
+      }
+    },
+    {
+      "data": { "url": "../ardd_fatal_crashes.csv" },
+      "transform": [
+        {
+          "aggregate": [
+            { "op": "count", "as": "Deaths" }
+          ],
+          "groupby": ["Year"]
+        },
+        { "filter": "datum.Year >= 2019" },
+        { "calculate": "'Fatal Crashes'", "as": "Category" }
+      ],
+      "mark": { "type": "line", "color": "blue", "point": true },
+      "encoding": {
+        "x": { "field": "Year", "type": "ordinal" },
+        "y": { "field": "Deaths", "type": "quantitative" },
+        "color": { "field": "Category", "type": "nominal", "title": "Type" },
+        "tooltip": [
+          { "field": "Year" },
+          { "field": "Deaths", "title": "Number of Deaths" },
+          { "field": "Category" }
+        ]
+      }
+    }
+  ],
+  "title": "Comparison: Alcohol-Related Deaths vs Fatal Car Crashes (2019–2023)"
+}

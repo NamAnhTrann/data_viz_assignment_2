@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Total fatalities by day of week",
+
+  "data": { "url": "../ardd_fatal_crashes.csv" },
+  "transform": [
+    {
+      "aggregate": [{ "op": "sum", "field": "Number Fatalities", "as": "TotalFatalities" }],
+      "groupby": ["Dayweek"]
+    }
+  ],
+  "mark": "rect",
+  "encoding": {
+    "x": {
+      "field": "Dayweek",
+      "type": "ordinal",
+      "sort": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "title": "Day of Week"
+    },
+    "color": {
+      "field": "TotalFatalities",
+      "type": "quantitative",
+      "title": "Total Fatalities",
+      "scale": { "scheme": "reds" }
+    },
+    "tooltip": [
+      { "field": "Dayweek", "title": "Day" },
+      { "field": "TotalFatalities", "title": "Fatalities" }
+    ]
+  },
+      "title": "Total Fatalities by Day of Week"
+
+}

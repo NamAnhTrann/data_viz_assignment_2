@@ -1,0 +1,58 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Crash types over years with overlapping transparent areas and data points",
+
+  "data": { "url": "../ardd_fatal_crashes.csv" },
+  "transform": [
+    {"filter": "datum.Year != 2023"},
+    {
+      "aggregate": [{ "op": "count", "as": "CrashCount" }],
+      "groupby": ["Year", "Crash Type"]
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "opacity": 0.7
+      },
+      "encoding": {
+        "x": { "field": "Year", "type": "ordinal", "title": "Year" },
+        "y": {
+          "field": "CrashCount",
+          "type": "quantitative",
+          "title": "Number of Crashes",
+          "stack": null
+        },
+        "color": {
+          "field": "Crash Type",
+          "type": "nominal",
+          "title": "Crash Type"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 70,
+        "stroke": "white",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "x": { "field": "Year", "type": "ordinal" },
+        "y": { "field": "CrashCount", "type": "quantitative" },
+        "color": {
+          "field": "Crash Type",
+          "type": "nominal"
+        },
+        "tooltip": [
+          { "field": "Year", "title": "Year" },
+          { "field": "Crash Type", "title": "Crash Type" },
+          { "field": "CrashCount", "title": "Number of Crashes" }
+        ]
+      }
+    }
+  ],
+    "title": "Crash Type Comparison Over the Years"
+}
