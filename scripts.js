@@ -2,11 +2,11 @@
 // I am going to use snake_case instead of camelCase (i code more in python haha)
 
 //---variable holders---//
-let map = 'graphs/map.json';
-let boxplot = 'graphs/boxplot.json';
-let line_chart = 'graphs/line_chart.json'
-let area_chart = "graphs/area_chart.json"
-let heatmap = 'graphs/heatmap.json'
+let map = 'map.json';
+let boxplot = 'boxplot.json';
+let line_chart = 'line_chart.json'
+let area_chart = "area_chart.json"
+let heatmap = 'heatmap.json'
 
 //1. Map
 vegaEmbed(".map", map).then(function(res){
