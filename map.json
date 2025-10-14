@@ -15,7 +15,7 @@
       "lookup": "properties.name",
      "from": {
   "data": {
-    "url": "../alcohol_death_summary.csv"
+    "url": "alcohol_death_summary.csv"
   },
   "key": "Region of usual residence",
   "fields": ["Year", "Rate"]
