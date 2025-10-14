@@ -4,7 +4,7 @@
 
   "projection": {"type": "mercator"},
   "data": {
-    "url": "graphs/ne_1.json",
+    "url": "ne_1.json",
     "format": {
       "type": "topojson",
       "feature": "ne_10m_admin_1_states_provinces"
