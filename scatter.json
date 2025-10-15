@@ -1,0 +1,55 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Hourly crash distribution by day of week.",
+  "data": { "url": "ardd_fatal_crashes.csv" },
+  "transform": [
+    {
+      "calculate": "hours(toDate('1970-01-01T' + datum.Time))",
+      "as": "Hour"
+    },
+    {
+      "aggregate": [{ "op": "count", "as": "CrashCount" }],
+      "groupby": ["Hour", "Dayweek"]
+    }
+  ],
+  "facet": {
+    "field": "Dayweek",
+    "type": "nominal",
+    "title": "Day of Week",
+    "sort": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ]
+  },
+  "spec": {
+    "width": 180,             
+    "height": 200,           
+    "mark": { "type": "area", "color": "#e45756", "opacity": 0.6 },
+    "encoding": {
+      "x": {
+        "field": "Hour",
+        "type": "quantitative",
+        "title": "Hour of Day (0–23)"
+      },
+      "y": {
+        "field": "CrashCount",
+        "type": "quantitative",
+        "title": "Number of Crashes"
+      },
+      "tooltip": [
+        { "field": "Hour", "title": "Hour" },
+        { "field": "CrashCount", "title": "Crashes" }
+      ]
+    }
+  },
+  "config": {
+    "view": { "stroke": "transparent" },
+    "facet": { "spacing": 15 },
+    "axis": { "labelFontSize": 10, "titleFontSize": 12 }
+  }
+}

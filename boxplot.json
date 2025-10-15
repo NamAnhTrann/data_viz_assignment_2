@@ -1,7 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Distribution of the speed limits at each crash location by states",
-
+ "width":500,
+  "height":300,
   "data": {"url":"ardd_fatal_crashes.csv"},
   "mark":"boxplot",
   "encoding":{

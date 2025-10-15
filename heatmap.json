@@ -1,7 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Total fatalities by day of week",
-
+ "width":500,
+  "height":200,
   "data": { "url": "ardd_fatal_crashes.csv" },
   "transform": [
     {

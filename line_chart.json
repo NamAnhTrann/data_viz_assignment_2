@@ -1,7 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "National comparison of alcohol-related deaths and fatal car crashes (2019–2023)",
-
+ "width":500,
+  "height":300,
   "data": {
     "values": []
   },

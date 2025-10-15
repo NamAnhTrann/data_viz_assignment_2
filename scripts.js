@@ -7,6 +7,7 @@ let boxplot = 'boxplot.json';
 let line_chart = 'line_chart.json'
 let area_chart = "area_chart.json"
 let heatmap = 'heatmap.json'
+let scatter = 'scatter.json'
 
 //1. Map
 vegaEmbed(".map", map).then(function(res){
@@ -33,6 +34,11 @@ vegaEmbed('.heatmap', heatmap).then(function(res){
 vegaEmbed(".area_chart", area_chart).then(function(res){
     console.log(res);
 }).catch(console.error)
+
+//6 scatter
+vegaEmbed('.scatter', scatter).then(function(res){
+    console.log(res);
+}).catch(error)
 
 
 

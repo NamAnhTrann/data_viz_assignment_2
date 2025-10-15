@@ -1,7 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Crash types over years with overlapping transparent areas and data points",
-
+ "width":500,
+  "height":300,
   "data": { "url": "ardd_fatal_crashes.csv" },
   "transform": [
     {"filter": "datum.Year != 2023"},
