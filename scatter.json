@@ -27,7 +27,7 @@
     ]
   },
   "spec": {
-    "width": 180,             
+    "width": 170,             
     "height": 200,           
     "mark": { "type": "area", "color": "#e45756", "opacity": 0.6 },
     "encoding": {

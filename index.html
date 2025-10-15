@@ -1,138 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Data Visualisation Dashboard</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Visualisation Dashboard</title>
 
-  <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Vega Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-</head>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  </head>
 
-<body class="bg-gray-100 text-gray-800">
-
-  <!-- Header -->
-  <header class="text-black text-center py-8 px-4">
-    <h1 class="text-2xl font-semibold mb-2">Data Visualisation Assignment 2   </h1>
-    <p class="text-black">Exploring Road Crashes In Australia and How Alcohol contribute to such issue</p>
-  </header>
-
-  <!-- Dashboard Container -->
-<main class="max-w-8xl mx-auto px-6 py-10 space-y-10">
-
-<!-- Map Section -->
-<section class="col-span-1 lg:col-span-2 bg-white p-6 rounded-xl shadow-md">
-  <div class="flex flex-col lg:flex-row items-center gap-6">
-    
-    <!-- Map -->
-    <div class="rounded-md h-[35rem] w-full lg:w-1/2 map"></div>
-
-    <!-- Text -->
-    <div class="w-full lg:w-1/2 flex flex-col justify-center">
-      <h2 class="text-xl font-semibold mb-2">Map: Fatal Road Crash Rates in Australia (2023)</h2>
-      <p class="text-gray-700 leading-relaxed">
-        This choropleth map displays the fatal road crash rates across Australian states and territories in 2023.
-        Darker shades indicate higher death rates per 100,000 people. The Northern Territory and Queensland record
-        the highest rates, reflecting extensive rural networks and higher speed zones.
+  <body class>
+    <!-- Header -->
+    <header class="text-black text-center py-8 px-4">
+      <h1 class="text-2xl font-semibold mb-2">
+        Data Visualisation Assignment 2
+      </h1>
+      <p class="text-black">
+        Exploring Road Crashes In Australia and How Alcohol contribute to such
+        issue
       </p>
-    </div>
+    </header>
 
-  </div>
-</section>
+    <main class="max-w-8xl mx-auto px-6 py-6 space-y-10">
+      <!-- Map Section -->
+      <section
+        class="col-span-1 lg:col-span-2 bg-white p-6 rounded-xl shadow-md"
+      >
+        <div class="flex flex-col lg:flex-row items-center gap-6">
+          <div class="rounded-md h-[35rem] w-full lg:w-1/2 map"></div>
+          <div class="w-full lg:w-1/2 flex flex-col justify-center">
+            <h2 class="text-xl font-semibold mb-2">
+              Map: Alcohol Consumption related Death Rates in Australia (2023)
+            </h2>
+            <p class="text-gray-700 leading-relaxed">
+              This choropleth map displays the fatal road crash rates across
+              Australian states and territories in 2023. Darker shades indicate
+              higher death rates per 100,000 people. The Northern Territory and
+              Queensland record the highest rates, reflecting extensive rural
+              networks and higher speed zones.
+            </p>
+          </div>
+        </div>
+      </section>
 
+      <!-- Boxplot -->
+      <section class="bg-white p-6 rounded-xl shadow-md">
+        <h2 class="text-xl font-semibold mb-4">
+          Crash Type and Speed Limit Analysis
+        </h2>
 
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div>
+            <div class="rounded-md h-[30rem] mb-5 boxplot"></div>
+            <h3 class="text-lg font-semibold mb-2">
+              Boxplot: Distribution of Speed Limits
+            </h3>
+            <p class="text-gray-700 leading-relaxed">
+              The boxplot compares posted speed limits at fatal crash sites
+              across states. The Northern Territory and South Australia show
+              wider spreads, reflecting mixed urban–rural road conditions, while
+              Victoria and Tasmania concentrate around mid-range speeds,
+              suggesting crashes occur primarily in controlled speed
+              environments.
+            </p>
+          </div>
 
-    <!-- Boxplot -->
-    <section class="bg-white p-6 rounded-xl shadow-md">
-      <h2 class="text-xl font-semibold mb-4">Crash Type and Speed Limit Analysis</h2>
+          <!-- Area Chart -->
+          <div>
+            <div class="rounded-md h-[30rem] mb-5 area_chart"></div>
+            <h3 class="text-lg font-semibold mb-2">
+              Area Chart: Crash Type Comparison (1989–2022)
+            </h3>
+            <p class="text-gray-700 leading-relaxed">
+              The area chart reveals a major long-term decline in both single-
+              and multi-vehicle fatal crashes since the early 1990s. However,
+              single-vehicle crashes remain proportionally persistent, showing
+              that driver behaviour factors—fatigue, distraction, or
+              impairment—continue to dominate fatality risks despite overall
+              safety gains.
+            </p>
+          </div>
+        </div>
+      </section>
 
-      <!-- Chart Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        
-        <!-- Boxplot -->
-        <div>
-          <div class="rounded-md h-[30rem] mb-5 boxplot"></div>
-          <h3 class="text-lg font-semibold mb-2">Boxplot: Distribution of Speed Limits</h3>
-          <p class="text-gray-700 leading-relaxed">
-            The boxplot compares posted speed limits at fatal crash sites across states. The Northern Territory and
-            South Australia show wider spreads, reflecting mixed urban–rural road conditions, while Victoria and Tasmania
-            concentrate around mid-range speeds, suggesting crashes occur primarily in controlled speed environments.
-          </p>
+      <!-- Line Chart -->
+      <section
+        class="col-span-1 lg:col-span-2 bg-white p-6 rounded-xl shadow-md"
+      >
+        <div class="flex flex-col-reverse lg:flex-row items-center gap-6">
+          <div class="w-full lg:w-1/2 flex flex-col justify-center">
+            <h2 class="text-xl font-semibold mb-2">
+              Line Chart: Fatal Crashes and Deaths (2019–2023)
+            </h2>
+            <p class="text-gray-700 leading-relaxed">
+              The line chart illustrates how both fatal crashes and total deaths
+              rose steadily until 2022 before showing a slight decline in 2023.
+              The consistent gap between the two lines indicates that
+              multi-fatality incidents contribute heavily to total deaths,
+              emphasizing the importance of reducing not just crash frequency,
+              but also crash severity.
+            </p>
+          </div>
+
+          <div class="rounded-md h-[30rem] mt-24 lg:w-1/2 line_chart"></div>
+        </div>
+      </section>
+
+      <!-- Heatmap -->
+      <section class="bg-white p-8 rounded-2xl shadow-md">
+        <div class="grid lg:grid-cols-2 gap-6 items-center">
+          <div class="rounded-md h-96 heatmap mt-12"></div>
+          <div class="mb-32">
+            <h2 class="text-2xl font-semibold mb-3">
+              Heatmap: Fatal Crashes by Day of the Week
+            </h2>
+            <p class="text-gray-700 leading-relaxed">
+              This heatmap reveals distinct temporal patterns in crash
+              fatalities. Friday and Saturday show the darkest cells, marking
+              peak risk periods often linked to late-night travel, social
+              activities, and fatigue. In contrast, Monday to Wednesday remain
+              relatively low, indicating predictable weekly rhythms useful for
+              targeted enforcement strategies.
+            </p>
+          </div>
         </div>
 
-        <!-- Area Chart -->
-        <div>
-          <div class="rounded-md h-[30rem] mb-5 area_chart"></div>
-          <h3 class="text-lg font-semibold mb-2">Area Chart: Crash Type Comparison (1989–2022)</h3>
-          <p class="text-gray-700 leading-relaxed">
-            The area chart reveals a major long-term decline in both single- and multi-vehicle fatal crashes since the early 1990s.
-            However, single-vehicle crashes remain proportionally persistent, showing that driver behaviour factors—fatigue,
-            distraction, or impairment—continue to dominate fatality risks despite overall safety gains.
-          </p>
+        <hr class="border-gray-200 my-6" />
+
+        <!-- Hourly Crashes Scatter -->
+        <h1 class="text-2xl font-semibold mb-3">Crashes by Hour and Day</h1>
+        <div class="grid lg:grid-cols-2 gap-6 items-center">
+          <div class="rounded-md mb-8 scatter"></div>
         </div>
+        <p class="text-gray-700">
+          This faceted area plot visualizes how crash frequencies fluctuate by
+          hour across different days. Late evening peaks, particularly on
+          weekends, suggest heightened vulnerability during periods of reduced
+          visibility and increased driver fatigue. These insights can guide
+          scheduling for patrol and public safety campaigns.
+        </p>
+      </section>
+    </main>
 
-      </div>
-    </section>
-
-
-    <!-- Line Chart -->
-<section class="col-span-1 lg:col-span-2 bg-white p-6 rounded-xl shadow-md">
-  <div class="flex flex-col-reverse lg:flex-row items-center gap-6">
-    
-    <!-- Text -->
-    <div class="w-full lg:w-1/2 flex flex-col justify-center">
-      <h2 class="text-xl font-semibold mb-2">Line Chart: Fatal Crashes and Deaths (2019–2023)</h2>
-      <p class="text-gray-700 leading-relaxed">
-        The line chart illustrates how both fatal crashes and total deaths rose steadily until 2022 before showing a 
-        slight decline in 2023. The consistent gap between the two lines indicates that multi-fatality incidents 
-        contribute heavily to total deaths, emphasizing the importance of reducing not just crash frequency, but 
-        also crash severity.
-      </p>
-    </div>
-
-    <!-- Chart -->
-    <div class="rounded-md h-[30rem] mt-24 lg:w-1/2 line_chart"></div>
-
-  </div>
-</section>
-
-
-
-    <!-- Heatmap -->
-<section class="bg-white p-8 rounded-2xl shadow-md">
-  <!-- Heatmap -->
-  <div class="grid lg:grid-cols-2 gap-6 items-center ">
-    <div class="rounded-md h-96 heatmap mt-12"></div>
-    <div class="mb-32">
-      <h2 class="text-2xl font-semibold mb-3">Heatmap: Fatal Crashes by Day of the Week</h2>
-      <p class="text-gray-700 leading-relaxed">
-        This heatmap reveals distinct temporal patterns in crash fatalities. 
-        <span class="font-semibold text-red-600">Friday</span> and 
-        <span class="font-semibold text-red-600">Saturday</span> show the darkest cells,
-        marking peak risk periods often linked to late-night travel, social activities, 
-        and fatigue. In contrast, <span class="font-semibold">Monday–Wednesday</span> remain 
-        relatively low, indicating predictable weekly rhythms useful for targeted enforcement strategies.
-      </p>
-    </div>
-  </div>
-
-  <hr class="border-gray-200 my-6">
-
-  <!-- Hourly Crashes Scatter -->
-  <div class="grid lg:grid-cols-2 gap-6 items-center">
-    <div class="rounded-md h-96 scatter"></div>
-  </div>
-</section>
-
-  </main>
-
-
-
-  <script src="scripts.js"></script>
-</body>
+    <script src="scripts.js"></script>
+  </body>
 </html>
