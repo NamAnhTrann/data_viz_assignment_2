@@ -1,11 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Crash types over years with overlapping transparent areas and data points",
- "width":500,
-  "height":300,
+  "description": "Crash types over years with highlight on legend click (no filtering).",
+  "width": 500,
+  "height": 300,
   "data": { "url": "ardd_fatal_crashes.csv" },
   "transform": [
-    {"filter": "datum.Year != 2023"},
+    { "filter": "datum.Year != 2023" },
     {
       "aggregate": [{ "op": "count", "as": "CrashCount" }],
       "groupby": ["Year", "Crash Type"]
@@ -13,10 +13,14 @@
   ],
   "layer": [
     {
-      "mark": {
-        "type": "area",
-        "opacity": 0.7
-      },
+      "mark": { "type": "area", "opacity": 0.7 },
+      "params": [
+        {
+          "name": "typeSelect",
+          "select": { "type": "point", "fields": ["Crash Type"] },
+          "bind": "legend"
+        }
+      ],
       "encoding": {
         "x": { "field": "Year", "type": "ordinal", "title": "Year" },
         "y": {
@@ -28,7 +32,12 @@
         "color": {
           "field": "Crash Type",
           "type": "nominal",
-          "title": "Crash Type"
+          "title": "Crash Type",
+          "legend": { "orient": "top" }
+        },
+        "opacity": {
+          "condition": { "param": "typeSelect", "value": 1 },
+          "value": 0.2
         }
       }
     },
@@ -43,9 +52,10 @@
       "encoding": {
         "x": { "field": "Year", "type": "ordinal" },
         "y": { "field": "CrashCount", "type": "quantitative" },
-        "color": {
-          "field": "Crash Type",
-          "type": "nominal"
+        "color": { "field": "Crash Type", "type": "nominal" },
+        "opacity": {
+          "condition": { "param": "typeSelect", "value": 1 },
+          "value": 0.2
         },
         "tooltip": [
           { "field": "Year", "title": "Year" },
@@ -55,5 +65,5 @@
       }
     }
   ],
-    "title": "Crash Type Comparison Over the Years"
+  "title": "Crash Type Comparison Over the Years"
 }
