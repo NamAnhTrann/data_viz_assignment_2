@@ -52,13 +52,11 @@
         "type": "quantitative",
         "scale": { "scheme": "reds" }
       },
-      "value": "lightgray",
-      "title": "Total Fatalities"
+      "value": "gray"
     },
     "tooltip": [
       { "field": "Dayweek", "title": "Day" },
-      { "field": "TotalFatalities", "title": "Fatalities" },
-      { "param": "fatalityThreshold", "title": "Threshold" }
+      { "field": "TotalFatalities", "title": "Fatalities" }
     ]
   },
 
