@@ -1,34 +1,66 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Total fatalities by day of week",
- "width":500,
-  "height":200,
+  "description": "Total fatalities by day of week with fatalities threshold slider",
+  "width": 500,
+  "height": 200,
   "data": { "url": "ardd_fatal_crashes.csv" },
+
   "transform": [
     {
-      "aggregate": [{ "op": "sum", "field": "Number Fatalities", "as": "TotalFatalities" }],
+      "aggregate": [
+        { "op": "sum", "field": "Number Fatalities", "as": "TotalFatalities" }
+      ],
       "groupby": ["Dayweek"]
     }
   ],
+
+  "params": [
+    {
+      "name": "fatalityThreshold",
+      "value": 6000,
+      "bind": {
+        "input": "range",
+        "min": 6000,
+        "max": 10000,
+        "step": 1,
+        "name": "Show days with fatalities "
+      }
+    }
+  ],
+
   "mark": "rect",
+
   "encoding": {
     "x": {
       "field": "Dayweek",
       "type": "ordinal",
-      "sort": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "sort": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
       "title": "Day of Week"
     },
     "color": {
-      "field": "TotalFatalities",
-      "type": "quantitative",
-      "title": "Total Fatalities",
-      "scale": { "scheme": "reds" }
+      "condition": {
+        "test": "datum.TotalFatalities >= fatalityThreshold",
+        "field": "TotalFatalities",
+        "type": "quantitative",
+        "scale": { "scheme": "reds" }
+      },
+      "value": "lightgray",
+      "title": "Total Fatalities"
     },
     "tooltip": [
       { "field": "Dayweek", "title": "Day" },
-      { "field": "TotalFatalities", "title": "Fatalities" }
+      { "field": "TotalFatalities", "title": "Fatalities" },
+      { "param": "fatalityThreshold", "title": "Threshold" }
     ]
   },
-      "title": "Total Fatalities by Day of Week"
 
+  "title": "Total Fatalities by Day of Week (Filter by Fatality Threshold)"
 }
