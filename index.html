@@ -6,8 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Data Visualisation Dashboard</title>
 
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS right here because its just the fonts -->
+    <style>
+      body {
+        font-family: "Roboto Slab", serif;
+      }
+    </style>
+
+    <!-- Vega libraries -->
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
@@ -50,7 +68,8 @@
       <!-- Boxplot -->
       <section class="bg-white p-6 rounded-xl shadow-md">
         <h2 class="text-xl font-semibold mb-4">
-          Crash Type and Speed Limit Analysis (click on the crash type legend to filter out types)
+          Crash Type and Speed Limit Analysis (click on the crash type legend to
+          filter out types)
         </h2>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
