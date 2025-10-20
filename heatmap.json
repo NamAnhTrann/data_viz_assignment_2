@@ -23,7 +23,7 @@
         "min": 6000,
         "max": 10000,
         "step": 1,
-        "name": "Show days with fatalities "
+        "name": "Show days with number of fatalities "
       }
     }
   ],
