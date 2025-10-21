@@ -23,7 +23,7 @@
       "encoding": {
         "x": { "field": "Year", "type": "ordinal", "title": "Year" },
         "y": { "field": "Deaths", "type": "quantitative", "title": "Number of Deaths" },
-        "color": { "field": "Category", "type": "nominal", "title": "Type" },
+        "color": { "field": "Category", "type": "nominal" },
         "tooltip": [
           { "field": "Year" },
           { "field": "Deaths", "title": "Number of Deaths" },
@@ -47,7 +47,7 @@
       "encoding": {
         "x": { "field": "Year", "type": "ordinal" },
         "y": { "field": "Deaths", "type": "quantitative" },
-        "color": { "field": "Category", "type": "nominal", "title": "Crash" },
+        "color": { "field": "Category", "type": "nominal", "title": "Type of Deaths" },
         "tooltip": [
           { "field": "Year" },
           { "field": "Deaths", "title": "Number of Deaths" },
