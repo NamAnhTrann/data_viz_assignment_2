@@ -41,13 +41,13 @@
           "groupby": ["Year"]
         },
         { "filter": "datum.Year >= 2019" },
-        { "calculate": "'Fatal Crashes'", "as": "Category" }
+        { "calculate": "'Fatal Crashes'", "as": "Category" }  
       ],
       "mark": { "type": "line", "color": "blue", "point": true },
       "encoding": {
         "x": { "field": "Year", "type": "ordinal" },
         "y": { "field": "Deaths", "type": "quantitative" },
-        "color": { "field": "Category", "type": "nominal", "title": "Type" },
+        "color": { "field": "Category", "type": "nominal", "title": "Crash" },
         "tooltip": [
           { "field": "Year" },
           { "field": "Deaths", "title": "Number of Deaths" },

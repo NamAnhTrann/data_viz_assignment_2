@@ -46,13 +46,15 @@
       "title": "Day of Week"
     },
     "color": {
+      "field": "TotalFatalities",
+      "type": "quantitative",
+      "scale": { "scheme": "reds" },
+      "title": "Total Fatalities",
+      "legend": { "title": "Total Fatalities" },
       "condition": {
-        "test": "datum.TotalFatalities >= fatalityThreshold",
-        "field": "TotalFatalities",
-        "type": "quantitative",
-        "scale": { "scheme": "reds" }
-      },
-      "value": "gray"
+        "test": "datum.TotalFatalities < fatalityThreshold",
+        "value": "lightgray"
+      }
     },
     "tooltip": [
       { "field": "Dayweek", "title": "Day" },

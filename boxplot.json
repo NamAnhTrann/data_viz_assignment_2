@@ -12,7 +12,7 @@
       "type": "quantitative",
       "title": "Speed Limit (km/h)"
     },
-    "color": { "field": "State_Full", "type": "nominal" }
+    "color": { "field": "State_Full", "type": "nominal", "title": "States" }
   },
   "title": "Distribution of the speed limits at each crash location by states"
 }
